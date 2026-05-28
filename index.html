@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Unang Sigaw E-Services Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-group">
+              <div class="logo-wrapper">
+                <img src="images/images.jpg" alt="Barangay Unang Sigaw Logo" class="header-logo-img">
+            </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">BRGY. UNANG SIGAW</h1>
+                    <p class="brand-subtitle">Quezon City E-Services Platform</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Announcements</a>
+                <a href="#login-section" class="btn-cta">Access Portal</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT & LOGIN CARD -->
+    <main id="login-section" class="auth-container">
+        <div class="login-card">
+            <div class="card-header">
+                <h2 class="card-title">Welcome Brgy Unang Sigaw Citizen</h2>
+                <p class="card-subtitle">Sign in to request clearances, track reports, and access services.</p>
+            </div>
+            <div class="card-body">
+                <form action="#" method="POST" class="login-form">
+
+                    <div class="form-group">
+                        <label for="identifier" class="form-label">Email or Mobile Number</label>
+                        <input type="text" id="identifier" name="identifier" required placeholder="e.g., 09171234567 or Juan@email.com" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="password" class="form-label">Password</label>
+                            <a href="#" class="inline-link">Forgot?</a>
+                        </div>
+                        <input type="password" id="password" name="password" required placeholder="••••••••" class="form-input">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember_me" name="remember_me" class="form-checkbox">
+                        <label for="remember_me" class="checkbox-label">Keep me logged in on this device</label>
+                    </div>
+                    <button type="submit" class="btn-submit">Sign In to Account</button>
+                </form>
+                <div class="card-footer">
+                    <p class="footer-text">
+                        New to this portal? 
+                        <a href="register.html" class="highlight-link">Create a Resident Account</a>
+                    </p>
+                    <p class="footer-text text-secondary">
+                        <a href="#" class="admin-link">Barangay Official/Staff Login →</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 🛠️ LINK RESTORED RIGHT HERE: -->
+    <!-- This tag hooks your form back into the script.js memory bank -->
+    <script src="script.js"></script>
+</body>
+</html>

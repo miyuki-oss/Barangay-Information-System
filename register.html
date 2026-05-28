@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Account Creation | Barangay Unang Sigaw Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BRANDED SYSTEM HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-group">
+                <div class="logo-wrapper">
+                    <span class="logo-icon">🇵🇭</span>
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">BRGY. UNANG SIGAW</h1>
+                    <p class="brand-subtitle">Quezon City E-Services Platform</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="btn-cta">Back to Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- REGISTRATION WORKFLOW -->
+    <main class="auth-container">
+        <div class="register-card">
+            <div class="card-header registration-theme">
+                <h2 class="card-title">Resident Registration</h2>
+                <p class="card-subtitle">Create your digital profile to securely request clearances and report community issues.</p>
+            </div>
+            <div class="card-body">
+                <form action="#" method="POST" enctype="multipart/form-data" class="login-form">
+                    <h3 class="section-divider-title">Personal Information</h3>
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" id="first_name" name="first_name" required placeholder="e.g., Juan" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" required placeholder="e.g., Dela Cruz" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label for="birthdate" class="form-label">Date of Birth</label>
+                            <input type="date" id="birthdate" name="birthdate" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="sector" class="form-label">Sector Category</label>
+                            <select id="sector" name="sector" class="form-input select-box">
+                                <option value="general">General Citizen</option>
+                                <option value="senior">Senior Citizen</option>
+                                <option value="pwd">PWD (Person with Disability)</option>
+                                <option value="solo_parent">Solo Parent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="section-divider-title">Address (Within Unang Sigaw Boundary)</h3>
+                    <div class="form-group">
+                        <label for="street" class="form-label">Street / Area</label>
+                        <select id="street" name="street" required class="form-input select-box">
+                            <option value="" disabled selected>Select street/area...</option>
+                            <option value="edsa">EDSA (Balintawak Area)</option>
+                            <option value="nlex">NLEX Service Road Zone</option>
+                            <option value="cloverleaf">Cloverleaf Community Compound</option>
+                            <option value="bonifacio">Bonifacio Street</option>
+                            <option value="market_view">Market View Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="address_details" class="form-label">House Number / Unit / Block & Lot</label>
+                        <input type="text" id="address_details" name="address_details" required placeholder="e.g., #42 Floor 2, Compound Alpha" class="form-input">
+                    </div>
+
+                    <h3 class="section-divider-title">Account Security</h3>
+                    <div class="form-group">
+                        <label for="mobile" class="form-label">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" required placeholder="e.g., 09171234567" class="form-input">
+                    </div>
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" required placeholder="••••••••" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required placeholder="••••••••" class="form-input">
+                        </div>
+                    </div>
+
+                    <h3 class="section-divider-title">Identity Verification</h3>
+                    <div class="form-group">
+                        <label for="valid_id" class="form-label">Upload Valid Government ID / Barangay ID</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="valid_id" name="valid_id" required accept="image/*" class="file-input-hidden">
+                            <div class="file-drop-zone">
+                                <span class="upload-icon">📸</span>
+                                <span class="upload-text">Click to upload ID photo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit btn-register-theme">Submit Registration Details</button>
+                </form>
+                <div class="card-footer">
+                    <p class="footer-text">
+                        Already have an active account? 
+                        <a href="index.html" class="highlight-link">Sign In Here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 🌟 THE MISSING LINK RIGHT HERE: -->
+    <!-- This hooks your registration form into the script.js memory bank -->
+    <script src="script.js"></script>
+</body>
+</html>

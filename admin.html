@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Barangay Unang Sigaw E-Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ADMIN PANEL HEADER -->
+    <header class="main-header admin-header-theme">
+        <div class="header-container">
+            <div class="brand-group">
+                <div class="logo-wrapper">
+                    <img src="images/images.jpg" alt="Barangay Unang Sigaw Logo" class="header-logo-img">
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">BRGY. UNANG SIGAW</h1>
+                    <p class="brand-subtitle">Admin Operations Console</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <span class="user-welcome-text">Active Session: <strong id="admin-display-name">Officer Loading...</strong></span>
+                <a href="index.html" class="btn-logout">System Sign Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN ADMINISTRATIVE DISPLAY -->
+    <main class="dashboard-container admin-layout-width">
+        
+        <!-- SIDEBAR: STATS LOG -->
+        
+            <div class="admin-stats-card">
+                <h3>Console Overview</h3>
+                <div class="stat-row">
+                    <span>Total Registered:</span>
+                    <strong id="stat-total-users">0</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Verification Queue:</span>
+                    <strong class="text-accent" id="stat-queue-count">0</strong>
+                </div>
+                <hr class="card-divider">
+                <p class="qr-caption">System running securely via Local Storage Mock Environment.</p>
+            </div>
+        </section>
+
+        <!-- MAIN TABLE: RESIDENT REGISTRATION LOGS -->
+        <section class="services-panel">
+            <h2 class="panel-section-title">Constituent Verification Ledger</h2>
+            
+            <div class="table-scroll-wrapper">
+                <table class="admin-ledger-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Mobile / Identifier</th>
+                            <th>Street / Zone Address</th>
+                            <th>Sector Class</th>
+                            <th>Administrative Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resident-table-rows">
+                        <!-- Javascript will dynamically print rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- DATABASE-LESS ADMIN CONTROLLER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Check if user has admin security rights
+            const currentSession = JSON.parse(localStorage.getItem("active_session"));
+            if (!currentSession || currentSession.role !== "admin") {
+                alert("⛔ Security Violation: Admin Access Required.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            // Display current admin officer name
+            document.getElementById("admin-display-name").innerText = currentSession.name;
+
+            // 2. Render ledger table function
+            function loadResidentLedger() {
+                const allUsers = JSON.parse(localStorage.getItem("brgy_users")) || [];
+                const tableBody = document.getElementById("resident-table-rows");
+                
+                // Filter down to rows who are standard residents
+                const residentList = allUsers.filter(user => user.role === "resident");
+
+                // Update Overview Metrics
+                document.getElementById("stat-total-users").innerText = residentList.length;
+                document.getElementById("stat-queue-count").innerText = residentList.length > 1 ? residentList.length - 1 : 0;
+
+                // Clear previous manual testing structures
+                tableBody.innerHTML = "";
+
+                if (residentList.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="5" class="table-empty-msg">No accounts registered inside local browser memory.</td></tr>`;
+                    return;
+                }
+
+                // Loop and drop array data down into rows
+                residentList.forEach((resident, index) => {
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td><strong>${resident.name}</strong></td>
+                        <td><code>${resident.identifier}</code></td>
+                        <td>${resident.zone}</td>
+                        <td><span class="badge-sector-general">${resident.sector}</span></td>
+                        <td>
+                            <button class="btn-verify-action" onclick="verifyResidentAction('${resident.identifier}')">
+                                Quick Approve
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // 3. Simulated verification action trigger logic
+            window.verifyResidentAction = function(mobileId) {
+                alert(`Verifying identity profile elements for ${mobileId}...\n\nAccount profile state successfully flagged as ACTIVE in ledger logs!`);
+            };
+
+            // Run on container bootup
+            loadResidentLedger();
+        });
+    </script>
+</body>
+</html>
